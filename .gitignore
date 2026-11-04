@@ -1,0 +1,12 @@
+# Archivos editables y material crudo local
+*.psd
+*.docx
+_originales/
+assets/raw/
+
+# Archivos de sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
