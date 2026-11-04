@@ -278,3 +278,61 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     });
   });
 })();
+
+/* ---------- Galería de instalaciones (lightbox) ---------- */
+(function () {
+  var dlg = document.getElementById('lightbox');
+  var openers = document.querySelectorAll('.g-open');
+  if (!dlg || !openers.length || typeof dlg.showModal !== 'function') return;
+  var img = dlg.querySelector('.lb-img');
+  var title = dlg.querySelector('.lb-title');
+  var num = dlg.querySelector('.lb-num');
+  var prev = dlg.querySelector('.lb-prev');
+  var next = dlg.querySelector('.lb-next');
+  var photos = [], index = 0, trigger = null, touchX = null;
+
+  function show(i) {
+    index = (i + photos.length) % photos.length;
+    img.src = photos[index].src;
+    img.alt = photos[index].alt;
+    num.textContent = photos.length > 1 ? (index + 1) + ' de ' + photos.length : '';
+    if (photos.length > 1) {
+      new Image().src = photos[(index + 1) % photos.length].src;
+      new Image().src = photos[(index - 1 + photos.length) % photos.length].src;
+    }
+  }
+  openers.forEach(function (b) {
+    b.addEventListener('click', function () {
+      photos = JSON.parse(b.getAttribute('data-photos'));
+      trigger = b;
+      title.textContent = b.getAttribute('data-title');
+      prev.hidden = next.hidden = photos.length < 2;
+      show(0);
+      dlg.showModal();
+      document.documentElement.classList.add('bio-lock');
+      dlg.querySelector('[data-close]').focus();
+    });
+  });
+  prev.addEventListener('click', function () { show(index - 1); });
+  next.addEventListener('click', function () { show(index + 1); });
+  dlg.addEventListener('click', function (e) {
+    if (e.target === dlg || e.target.closest('[data-close]')) dlg.close();
+  });
+  dlg.addEventListener('keydown', function (e) {
+    if (photos.length < 2) return;
+    if (e.key === 'ArrowLeft') show(index - 1);
+    if (e.key === 'ArrowRight') show(index + 1);
+  });
+  dlg.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  dlg.addEventListener('touchend', function (e) {
+    if (touchX === null || photos.length < 2) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  dlg.addEventListener('close', function () {
+    document.documentElement.classList.remove('bio-lock');
+    img.removeAttribute('src');
+    if (trigger) trigger.focus();
+  });
+})();

@@ -941,3 +941,33 @@ html.bio-lock { overflow: hidden; }
 .video-cover { justify-content: flex-end; padding-bottom: 11%; }
 .faq .acc-btn[aria-expanded="true"] .ico { background: var(--red); color: #fff; }
 .proof-quote figcaption a { color: #1A73E8; font-weight: 700; }
+
+
+/* ---------- Galería de instalaciones: clic en cada panel ---------- */
+.g-open { position: absolute; inset: 0; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: inherit; }
+.g-open:focus-visible { outline: 3px solid #fff; outline-offset: -5px; }
+.g-count { position: absolute; top: 12px; right: 12px; padding: 5px 11px; border-radius: 999px; background: rgba(18,20,24,.78); color: #fff; font: inherit; font-size: .78rem; font-weight: 700; }
+.lb { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(18,20,24,.96); color: #fff; overflow: hidden; }
+.lb[open] { display: grid; grid-template-rows: minmax(0, 1fr) auto; place-items: center; padding: 64px clamp(12px, 7vw, 96px) 0; animation: lb-in .2s ease-out; }
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+.lb::backdrop { background: rgba(18,20,24,.96); }
+.lb-img { width: 100%; height: 100%; object-fit: contain; }
+.lb-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin: 0; padding: 14px 16px 18px; font-size: .95rem; text-align: center; }
+.lb-title { font-weight: 700; }
+.lb-num { color: #C9C6C0; }
+.lb-btn { position: absolute; z-index: 2; width: 48px; height: 48px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; cursor: pointer; transition: background .2s; }
+.lb-btn:hover { background: rgba(255,255,255,.26); }
+.lb-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.lb-btn[hidden] { display: none; }
+.lb-btn .ico { width: 22px; height: 22px; }
+.lb-close { top: 10px; right: 12px; }
+.lb-prev { left: 14px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 14px; top: 50%; transform: translateY(-50%); }
+.lb-prev .ico { transform: scaleX(-1); }
+@media (max-width: 699px) {
+  .lb[open] { padding-inline: 0; }
+  .lb-prev, .lb-next { top: auto; bottom: 8px; transform: none; }
+  .lb-prev { left: 12px; }
+  .lb-next { right: 12px; }
+  .lb-bar { padding: 14px 70px 18px; min-height: 64px; align-content: center; }
+}
