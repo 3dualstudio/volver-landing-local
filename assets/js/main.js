@@ -429,3 +429,12 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
   });
 })();
 
+/* ---------- Botón "volver arriba": aparece al avanzar por la página ---------- */
+(function () {
+  var btn = document.getElementById('to-top');
+  if (!btn) return;
+  var update = function () { btn.classList.toggle('is-visible', window.scrollY > 700); };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+

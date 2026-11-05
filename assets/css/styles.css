@@ -1009,3 +1009,13 @@ html.bio-lock { overflow: hidden; }
 .hero :focus-visible { outline-color: #fff; }
 
 .hero .kicker .dot { box-shadow: 0 0 0 4px rgba(229,72,77,.28); }
+
+/* ---------- Botón volver arriba ---------- */
+.to-top { position: fixed; right: 16px; bottom: calc(var(--sticky-h) + 14px + env(safe-area-inset-bottom, 0px)); z-index: 45; width: 46px; height: 46px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(18,20,24,.88); color: #fff; box-shadow: 0 8px 22px -8px rgba(0,0,0,.6); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .25s, transform .25s, visibility .25s, background .2s; }
+.to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--red); }
+.to-top:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.to-top .ico { width: 22px; height: 22px; transform: rotate(-90deg); }
+.consent:not([hidden]) ~ .to-top { display: none; }
+@media (min-width: 900px) { .to-top { right: 24px; bottom: 24px; } }
+
