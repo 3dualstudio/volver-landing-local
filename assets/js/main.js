@@ -347,7 +347,25 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     v.removeAttribute('autoplay');
     v.pause();
     v.currentTime = 0;
+    return;
   }
+
+  /* Algunos teléfonos bloquean el autoplay (p. ej. iPhone en modo de bajo consumo):
+     se reintenta al cargar, al volver a la pestaña y con el primer toque. */
+  var play = function () {
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+  };
+  var gestures = ['touchend', 'click', 'keydown'];
+  var onGesture = function () { if (v.paused) play(); };
+  gestures.forEach(function (ev) { document.addEventListener(ev, onGesture, { passive: true, capture: true }); });
+  v.addEventListener('playing', function () {
+    gestures.forEach(function (ev) { document.removeEventListener(ev, onGesture, { capture: true }); });
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && v.paused) play();
+  });
+  play();
 })();
 
 /* ---------- Pasarelas en móvil: flechas superpuestas y aviso de deslizar ---------- */
