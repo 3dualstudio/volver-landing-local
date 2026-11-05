@@ -159,8 +159,13 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 .micro .ico { color: var(--red); margin-top: 3px; }
 .link-form { color: var(--red); font-weight: 700; text-underline-offset: 3px; white-space: nowrap; }
 @media (max-width: 899px) {
-  .hero-bg { order: 2; margin: 0 var(--gutter) 28px; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; }
-  .hero-bg video { object-position: 50% 50%; }
+  /* Video de fondo: ocupa la parte superior y se funde con el negro detrás del texto */
+  .hero-bg { position: absolute; top: 0; left: 0; right: 0; height: 480px; overflow: hidden; }
+  .hero-bg video { object-position: 51% 50%; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(18,20,24,.08) 0, rgba(18,20,24,.12) 110px, rgba(18,20,24,.76) 195px, rgba(18,20,24,.9) 330px, #121418 480px); }
+  .hero-inner { z-index: 2; }
+  .hero-copy { padding-block: 185px 32px; }
 }
 @media (max-width: 559px) { .cta-row .btn { width: 100%; } }
 @media (min-width: 900px) {
