@@ -111,7 +111,7 @@
         obs.unobserve(en.target);
       });
     }, { threshold: 0.25 });
-    $$('[data-view], .identity').forEach(function (el) { viewObs.observe(el); });
+    $$('[data-view]').forEach(function (el) { viewObs.observe(el); });
 
     var revealTargets = $$('.signal-card, .model-card, .method-card, .center-card, .path, .steps li, .person, .gallery figure, .voice, .call-steps li, .stats li');
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
@@ -331,8 +331,21 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
   }, { passive: true });
   dlg.addEventListener('close', function () {
+    if (dlg.open) return; // se reabrió antes de que llegara este evento
     document.documentElement.classList.remove('bio-lock');
     img.removeAttribute('src');
     if (trigger) trigger.focus();
   });
+})();
+
+/* ---------- Video del hero: en móvil usa el póster liviano; respeta "reducir movimiento" ---------- */
+(function () {
+  var v = document.getElementById('hero-video');
+  if (!v) return;
+  if (window.matchMedia('(max-width: 899px)').matches) v.setAttribute('poster', 'assets/img/hero-abrazo-poster-1280.webp');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay');
+    v.pause();
+    v.currentTime = 0;
+  }
 })();

@@ -149,7 +149,7 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 /* ---------- 1 · Hero (foto a sangre) ---------- */
 .hero { position: relative; background: var(--paper); overflow: hidden; display: flex; flex-direction: column; }
 .hero-bg { display: block; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg video { display: block; width: 100%; height: 100%; object-fit: cover; background: #1E2A17; }
 .hero-inner { position: relative; z-index: 1; }
 .hero-copy { padding-block: 28px 32px; }
 .hero-copy h1 { margin-bottom: 20px; }
@@ -160,13 +160,13 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 .link-form { color: var(--red); font-weight: 700; text-underline-offset: 3px; white-space: nowrap; }
 @media (max-width: 899px) {
   .hero-bg { order: 2; margin: 0 var(--gutter) 28px; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; }
-  .hero-bg img { object-position: 50% 30%; }
+  .hero-bg video { object-position: 50% 50%; }
 }
 @media (max-width: 559px) { .cta-row .btn { width: 100%; } }
 @media (min-width: 900px) {
   .hero { min-height: min(calc(100svh - var(--header-h) - 40px), 820px); justify-content: center; }
   .hero-bg { position: absolute; top: 0; bottom: 0; right: 0; left: 42%; }
-  .hero-bg img { object-position: 58% 30%; }
+  .hero-bg video { object-position: 51% 50%; }
   .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background: linear-gradient(90deg, #fff 0%, #fff 42%, rgba(255,255,255,.92) 46%, rgba(255,255,255,.55) 51%, rgba(255,255,255,.15) 57%, rgba(255,255,255,0) 62%); }
   .hero-inner { z-index: 2; }
@@ -220,6 +220,7 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 .video-grid { display: grid; gap: 40px; align-items: center; }
 @media (min-width: 960px) { .video-grid { grid-template-columns: .85fr 1.15fr; gap: 64px; } }
 .video-copy h2 { color: #fff; margin-bottom: 20px; }
+.video-copy h2 em { color: #E5484D; }
 .video-copy > p { color: #BDBAB4; font-size: 1.05rem; }
 .video-who { display: flex; align-items: center; gap: 14px; margin-top: 28px; }
 .video-who img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; object-position: 50% 20%; border: 2px solid rgba(255,255,255,.18); }
@@ -329,7 +330,9 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 @media (min-width: 900px) {
   .gallery-sp { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 14px; }
   .gallery-sp .g-a { grid-row: span 2; }
-  .gallery-sd { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 14px; height: 300px; }
+  .gallery-sp .g-wide { grid-column: span 2; }
+  .gallery-sd { display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 250px 250px; gap: 14px; }
+  .gallery-sd .g-a { grid-row: span 2; }
 }
 
 /* ---------- 9 · Equipo ---------- */
@@ -529,7 +532,7 @@ h3 { font-family: var(--sans); font-weight: 700; font-size: 1.125rem; line-heigh
 @media (max-width: 959px) { .first-copy { order: -1; } }
 @media (min-width: 960px) { .first-grid { grid-template-columns: .95fr 1.05fr; gap: 72px; align-items: stretch; } .first-media { display: flex; flex-direction: column; } .first-media picture { flex: 1; display: flex; } .first-media img { height: 100%; min-height: 460px; aspect-ratio: auto; object-position: 50% 35%; } }
 .first-media { position: relative; }
-.first-media img { width: 100%; border-radius: var(--radius-lg); aspect-ratio: 4/3.4; object-fit: cover; object-position: 50% 40%; }
+.first-media img { width: 100%; border-radius: var(--radius-lg); aspect-ratio: 4/3.4; object-fit: cover; object-position: 50% 25%; }
 .reassure { display: grid; gap: 10px; margin-top: 16px; }
 @media (min-width: 960px) {
   .reassure { position: absolute; left: 20px; right: 20px; bottom: 20px; margin: 0; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); padding: 18px 20px; border-radius: var(--radius); box-shadow: var(--shadow); }
@@ -781,7 +784,6 @@ html.bio-lock { overflow: hidden; }
 .stats span { max-width: none; text-wrap: balance; }
 
 /* ---------- Franja de emergencia alineada a la derecha (escritorio) ---------- */
-@media (min-width: 700px) { .emergency-inner { justify-content: flex-end; } .emergency p { text-align: right; } }
 
 /* ---------- Íconos de botones un poco más grandes ---------- */
 .btn .ico { width: 1.3em; height: 1.3em; }
@@ -801,9 +803,6 @@ html.bio-lock { overflow: hidden; }
 .signal-card p { color: rgba(255,255,255,.86); }
 
 /* ---------- Barra superior y header equilibrados ---------- */
-.emergency p.em-left { display: flex; align-items: center; gap: 8px; margin: 0 auto 0 0; color: #E9E7E3; font-weight: 600; text-align: left; white-space: nowrap; }
-.em-left .ico { width: 1.15em; height: 1.15em; color: #F1B9BB; }
-@media (max-width: 1099px) { .emergency p.em-left { display: none; } }
 .header-nav { display: none; }
 @media (min-width: 1100px) {
   .header-nav { display: flex; align-items: center; gap: clamp(18px, 2vw, 30px); margin-inline: auto; }

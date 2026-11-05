@@ -23,12 +23,9 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <!-- Hero: carga prioritaria (imagen de stock provisional; reemplazar por fotografía real de VOLVER) -->
-  <link rel="preload" as="image" type="image/webp"
-        href="assets/img/stock-hero-familia-1400.webp"
-        imagesrcset="assets/img/stock-hero-familia-800.webp 800w, assets/img/stock-hero-familia-1400.webp 1400w, assets/img/stock-hero-familia-2400.webp 2400w"
-        imagesizes="100vw" media="(min-width: 900px)" fetchpriority="high">
-  <link rel="preload" as="image" type="image/webp" href="assets/img/stock-hero-familia-movil-900.webp" media="(max-width: 899px)">
+  <!-- Hero: carga prioritaria -->
+  <link rel="preload" as="image" type="image/webp" href="assets/img/hero-abrazo-poster-1920.webp" media="(min-width: 900px)">
+  <link rel="preload" as="image" type="image/webp" href="assets/img/hero-abrazo-poster-1280.webp" media="(max-width: 899px)">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,14 +124,13 @@
     <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 3 5 6v5.5c0 4.3 2.9 8 7 9.5 4.1-1.5 7-5.2 7-9.5V6l-7-3Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 12 2.2 2.2L15.5 10"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3Z"/></symbol>
     <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></g></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m6 6 12 12M18 6 6 18"/></symbol>
   </svg>
 
-  <!-- ============ BARRA DE EMERGENCIA ============
-       Número tomado de volver.com.do (EMERGENCIAS). Confirmar antes de publicar. -->
+  <!-- ============ BARRA DE EMERGENCIA ============ -->
   <div class="emergency" role="region" aria-label="Emergencias">
     <div class="wrap emergency-inner">
-      <p class="em-left hide-md"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> Admisiones confidenciales</p>
       <span class="em-dot" aria-hidden="true"></span>
       <p><strong>¿Es una emergencia?</strong> <span class="hide-sm">Llame ahora a VOLVER:</span>
         <a href="tel:+18497853789" data-event="click_call_emergency" data-loc="topbar">+1 (849) 785-3789</a>
@@ -171,15 +167,14 @@
 
     <!-- ============ 1 · HERO ============ -->
     <section class="hero" id="hero" aria-labelledby="hero-title">
-      <!-- IMAGEN PROVISIONAL (stock Unsplash). Reemplazar por fotografía real de VOLVER: fachada, recepción o entorno clínico. -->
-      <picture class="hero-bg">
-        <source media="(max-width: 899px)" srcset="assets/img/stock-hero-familia-movil-900.webp">
-        <img src="assets/img/stock-hero-familia-1400.webp"
-             srcset="assets/img/stock-hero-familia-800.webp 800w, assets/img/stock-hero-familia-1400.webp 1400w, assets/img/stock-hero-familia-2400.webp 2400w"
-             sizes="100vw" width="2400" height="1601"
-             alt="Un padre abraza con afecto a un familiar en un jardín."
-             fetchpriority="high" decoding="async">
-      </picture>
+      <div class="hero-bg">
+        <video id="hero-video" autoplay muted loop playsinline disablepictureinpicture preload="auto" width="1920" height="1080"
+               poster="assets/img/hero-abrazo-poster-1920.webp"
+               role="img" aria-label="Una madre y su hijo adulto se abrazan en un jardín.">
+          <source src="assets/video/hero-abrazo-720.mp4" type="video/mp4" media="(max-width: 899px)">
+          <source src="assets/video/hero-abrazo-1080.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="wrap hero-inner">
         <div class="hero-copy">
           <p class="kicker"><span class="dot" aria-hidden="true"></span>Clínica Conductual VOLVER · República Dominicana</p>
@@ -265,10 +260,10 @@
       <div class="wrap video-grid">
         <div class="video-copy">
           <p class="eyebrow eyebrow-light">Un mensaje del equipo clínico</p>
-          <h2 id="video-title">Cuando la familia ya no puede manejar la situación sola</h2>
+          <h2 id="video-title">Volver en sí. Volver a tomar dirección. Volver a los vínculos. <em>Volver a la familia.</em></h2>
           <p>La “R” de Volver no es solo una letra. Hanoi Vargas explica qué representa y por qué, aun cuando una persona se aleja, el regreso es el centro de nuestro trabajo.</p>
           <p class="video-who"><img src="assets/img/team-hanoi-vargas.webp" alt="" width="880" height="800" loading="lazy"><span><strong>Hanoi Vargas</strong>Psicólogo clínico · Especialista en adicciones</span></p>
-          <a class="btn btn-red btn-lg video-cta" href="tel:+18095346002" data-event="click_call_hero" data-loc="video"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Hablar con admisiones</a>
+          <a class="btn btn-red btn-lg video-cta" href="https://tidycal.com/clinicavolveroficial/orientacion-confidencial" target="_blank" rel="noopener" data-event="click_schedule" data-loc="video"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> Agendar orientación</a>
         </div>
         <div class="video-frame">
           <div class="video-box" data-video>
@@ -337,7 +332,6 @@
             </ul>
           </div>
 
-          <!-- Publicar únicamente profesionales y credenciales vigentes confirmados. -->
           <ul class="team-grid" aria-label="Profesionales de VOLVER">
             <li class="person person-lead has-bio">
               <button class="person-photo" type="button" aria-haspopup="dialog" aria-controls="bio-hanoi" data-bio="bio-hanoi" data-event="open_bio" data-loc="team-hanoi">
@@ -388,8 +382,8 @@
               <div class="person-info"><h3>Gregorio Marte</h3><p class="role">Psicólogo clínico</p><p class="cred">Especialista en adicciones</p></div>
             </li>
             <li class="person person-cta">
-              <p>¿Necesita hablar con alguien del equipo hoy?</p>
-              <a class="btn btn-red" href="tel:+18095346002" data-event="click_call_hero" data-loc="team"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Llamar a admisiones</a>
+              <p>¿Quiere conversar con alguien del equipo?</p>
+              <a class="btn btn-red" href="https://tidycal.com/clinicavolveroficial/orientacion-confidencial" target="_blank" rel="noopener" data-event="click_schedule" data-loc="team"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> Agendar orientación</a>
             </li>
           </ul>
         </div>
@@ -449,8 +443,8 @@
                 <li><strong>Preparación del entorno familiar</strong> para el alta y la continuidad del tratamiento.</li>
               </ul>
               <div class="mx-cta">
-                <p>¿Cómo participaría su familia? El equipo de admisiones se lo explica en una llamada confidencial.</p>
-                <a href="tel:+18095346002" data-event="click_call_hero" data-loc="method">Llamar a admisiones <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                <p>¿Cómo participaría su familia? El equipo de admisiones se lo explica de forma confidencial.</p>
+                <a href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="method">Consultar por WhatsApp <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
               </div>
             </article>
           </div>
@@ -473,7 +467,6 @@
         <header class="section-head">
           <p class="eyebrow">Ruta clínica VOLVER</p>
           <h2 id="ruta-title">Dos centros. Una misma ruta de atención.</h2>
-          <!-- Fuente: licencia de habilitación MSP, código 00101A05833, 25/05/2026 – 25/05/2031 (Ley 42-01, Reglamento 1138-03). -->
           <p class="license-badge"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg> <span><strong>Clínica habilitada por el Ministerio de Salud Pública</strong> · Licencia de habilitación, código 00101A05833</span></p>
           <p class="section-intro">VOLVER articula su atención en República Dominicana a través de dos centros complementarios que cubren desde la atención de emergencias y desintoxicación hasta la rehabilitación residencial de larga estadía.</p>
         </header>
@@ -515,7 +508,7 @@
             <h3 id="intl-title">Acompañamiento a familias vinculadas con Estados Unidos</h3>
             <p>VOLVER cuenta con un centro de alcance en Lawrence, Massachusetts, y desarrolla espacios de vinculación y presencia institucional en Nueva York. Esta presencia puede facilitar orientación y conexión con familias que residen en Estados Unidos y evalúan atención en República Dominicana.</p>
           </div>
-          <a class="btn btn-wa" href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="international"><svg class="ico ico-wa" aria-hidden="true"><use href="#i-wa"/></svg> Consultar por WhatsApp</a>
+          <a class="btn btn-wa" href="https://tidycal.com/clinicavolveroficial/orientacion-confidencial" target="_blank" rel="noopener" data-event="click_schedule" data-loc="international"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> Agendar orientación</a>
         </aside>
         <p class="route-close">El objetivo es que cada paciente reciba la atención que corresponda a sus necesidades clínicas y a la etapa de su proceso.</p>
       </div>
@@ -547,27 +540,24 @@
           <h3 class="gallery-title"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg> San Pedro de Macorís <span>Internamiento y rehabilitación</span></h3>
           <div class="gallery gallery-sp" tabindex="0" aria-label="Galería de San Pedro de Macorís (deslizable)">
             <figure class="g-a"><img src="assets/img/sp-jardin-800.webp" srcset="assets/img/sp-jardin-800.webp 800w, assets/img/sp-jardin-1536.webp 1536w" sizes="(min-width: 960px) 50vw, 85vw" width="1536" height="1024" alt="Jardín del centro residencial con un gran árbol, banco y áreas verdes." loading="lazy" decoding="async"><figcaption>Áreas verdes y jardines</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-jardin-1536.webp&quot;, &quot;alt&quot;: &quot;Jardín del centro residencial con un gran árbol, banco y áreas verdes.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-patio-hierro.webp&quot;, &quot;alt&quot;: &quot;Área de descanso en el jardín con sillas y mesas de hierro forjado bajo los árboles.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-bancos-arbol.webp&quot;, &quot;alt&quot;: &quot;Bancos de madera con cojines a la sombra de un gran árbol.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-jardin-sillas.webp&quot;, &quot;alt&quot;: &quot;Sillas de hierro sobre el césped bajo un árbol, con flores azules en primer plano.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-rincon-arbol.webp&quot;, &quot;alt&quot;: &quot;Rincón con banco y sillas de hierro alrededor de un gran árbol.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-sillas-rojas.webp&quot;, &quot;alt&quot;: &quot;Rincón al aire libre con sillas rojas entre palmeras y plantas.&quot;}]" data-title="Áreas verdes y jardines" data-event="gallery_open" data-loc="Áreas verdes y jardines" aria-label="Ampliar Áreas verdes y jardines (6 fotos)"><span class="g-count">6 fotos</span></button></figure>
-            <figure><img src="assets/img/sp-comedor-1-640.webp" srcset="assets/img/sp-comedor-1-640.webp 640w, assets/img/sp-comedor-1-1536.webp 1536w" sizes="(min-width: 960px) 25vw, 85vw" width="1536" height="1024" alt="Comedor con mesas de madera y ventanales hacia el jardín." loading="lazy" decoding="async"><figcaption>Instalaciones generales</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-comedor-1-1536.webp&quot;, &quot;alt&quot;: &quot;Comedor con mesas de madera y ventanales hacia el jardín.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-comedor-2-1536.webp&quot;, &quot;alt&quot;: &quot;Comedor con mesa de madera, cuadros en la pared y ventana de servicio.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-edificios-1536.webp&quot;, &quot;alt&quot;: &quot;Edificaciones del centro rodeadas de césped, caminos y jardines.&quot;}]" data-title="Instalaciones generales" data-event="gallery_open" data-loc="Instalaciones generales" aria-label="Ampliar Instalaciones generales (3 fotos)"><span class="g-count">3 fotos</span></button></figure>
-            <figure><img src="assets/img/sp-convivencia-640.webp" srcset="assets/img/sp-convivencia-640.webp 640w, assets/img/sp-convivencia-1200.webp 1200w" sizes="(min-width: 960px) 25vw, 85vw" width="1200" height="800" alt="Área de convivencia con sofá y mesas de madera." loading="lazy" decoding="async"><figcaption>Espacios de convivencia</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-convivencia-1200.webp&quot;, &quot;alt&quot;: &quot;Área de convivencia con sofá y mesas de madera.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-sala-ratan.webp&quot;, &quot;alt&quot;: &quot;Sala interior con muebles de ratán y ventanales hacia el jardín.&quot;}]" data-title="Espacios de convivencia" data-event="gallery_open" data-loc="Espacios de convivencia" aria-label="Ampliar Espacios de convivencia (2 fotos)"><span class="g-count">2 fotos</span></button></figure>
-            <figure><img src="assets/img/sp-baloncesto-640.webp" srcset="assets/img/sp-baloncesto-640.webp 640w, assets/img/sp-baloncesto-1536.webp 1536w" sizes="(min-width: 960px) 25vw, 85vw" width="1536" height="1024" alt="Cancha de baloncesto al aire libre rodeada de palmas y árboles." loading="lazy" decoding="async"><figcaption>Áreas recreativas</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-baloncesto-1536.webp&quot;, &quot;alt&quot;: &quot;Cancha de baloncesto al aire libre rodeada de palmas y árboles.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-voleibol-1536.webp&quot;, &quot;alt&quot;: &quot;Red de voleibol y balones sobre el césped del centro.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-gimnasio-equipos.webp&quot;, &quot;alt&quot;: &quot;Gimnasio con máquina multifuncional y bicicleta estática frente a ventanales.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-gimnasio-caminadoras.webp&quot;, &quot;alt&quot;: &quot;Gimnasio con dos caminadoras frente a un ventanal con vista al área verde.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-ajedrez-patio-1536.webp&quot;, &quot;alt&quot;: &quot;Patio techado con pérgola, plantas y mesas de ajedrez.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-ajedrez-jardin-1536.webp&quot;, &quot;alt&quot;: &quot;Mesa con tablero de ajedrez frente al jardín del centro.&quot;}]" data-title="Áreas recreativas" data-event="gallery_open" data-loc="Áreas recreativas" aria-label="Ampliar Áreas recreativas (6 fotos)"><span class="g-count">6 fotos</span></button></figure>
-            <figure><img src="assets/img/sp-audiovisual-640.webp" srcset="assets/img/sp-audiovisual-640.webp 640w, assets/img/sp-audiovisual-1200.webp 1200w" sizes="(min-width: 960px) 25vw, 85vw" width="1200" height="800" alt="Salón audiovisual con pantalla de proyección y biblioteca." loading="lazy" decoding="async"><figcaption>Espacios de atención y soporte</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-audiovisual-1200.webp&quot;, &quot;alt&quot;: &quot;Salón audiovisual con pantalla de proyección y biblioteca.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-recepcion-1200.webp&quot;, &quot;alt&quot;: &quot;Recepción e información del centro de San Pedro de Macorís.&quot;}]" data-title="Espacios de atención y soporte" data-event="gallery_open" data-loc="Espacios de atención y soporte" aria-label="Ampliar Espacios de atención y soporte (2 fotos)"><span class="g-count">2 fotos</span></button></figure>
+            <figure class="g-wide"><img src="assets/img/sp-comedor-1-640.webp" srcset="assets/img/sp-comedor-1-640.webp 640w, assets/img/sp-comedor-1-1536.webp 1536w" sizes="(min-width: 960px) 50vw, 85vw" width="1536" height="1024" alt="Comedor con mesas de madera y ventanales hacia el jardín." loading="lazy" decoding="async"><figcaption>Instalaciones generales</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-comedor-1-1536.webp&quot;, &quot;alt&quot;: &quot;Comedor con mesas de madera y ventanales hacia el jardín.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-comedor-2-1536.webp&quot;, &quot;alt&quot;: &quot;Comedor con mesa de madera, cuadros en la pared y ventana de servicio.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-comedor-3.webp&quot;, &quot;alt&quot;: &quot;Comedor con mesas de madera, paneles negros en la pared y ventanas al jardín.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-sala-ratan.webp&quot;, &quot;alt&quot;: &quot;Sala interior con muebles de ratán y ventanales hacia el jardín.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-fachada-principal.webp&quot;, &quot;alt&quot;: &quot;Fachada del edificio principal de VOLVER con la fuente de piedra a la entrada.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-fuente-r.webp&quot;, &quot;alt&quot;: &quot;Fuente de piedra con la letra R de VOLVER en rojo y cascadas de agua.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-edificios-1536.webp&quot;, &quot;alt&quot;: &quot;Edificaciones del centro rodeadas de césped, caminos y jardines.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-mural-mariposa.webp&quot;, &quot;alt&quot;: &quot;Edificación del centro con un mural de mariposa y el lema «Rompe cadenas».&quot;}]" data-title="Instalaciones generales" data-event="gallery_open" data-loc="Instalaciones generales" aria-label="Ampliar Instalaciones generales (8 fotos)"><span class="g-count">8 fotos</span></button></figure>
+            <figure><img src="assets/img/sp-baloncesto-640.webp" srcset="assets/img/sp-baloncesto-640.webp 640w, assets/img/sp-baloncesto-1536.webp 1536w" sizes="(min-width: 960px) 25vw, 85vw" width="1536" height="1024" alt="Cancha de baloncesto al aire libre rodeada de palmas y árboles." loading="lazy" decoding="async"><figcaption>Áreas recreativas</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sp-baloncesto-1536.webp&quot;, &quot;alt&quot;: &quot;Cancha de baloncesto al aire libre rodeada de palmas y árboles.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-voleibol-1536.webp&quot;, &quot;alt&quot;: &quot;Red de voleibol y balones sobre el césped del centro.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-gimnasio-equipos.webp&quot;, &quot;alt&quot;: &quot;Gimnasio con máquina multifuncional y bicicleta estática frente a ventanales.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-gimnasio-caminadoras.webp&quot;, &quot;alt&quot;: &quot;Gimnasio con dos caminadoras frente a un ventanal con vista al área verde.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-pingpong.webp&quot;, &quot;alt&quot;: &quot;Mesa de ping-pong con raquetas junto a un jardín de helechos.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-ajedrez-patio-1536.webp&quot;, &quot;alt&quot;: &quot;Patio techado con pérgola, plantas y mesas de ajedrez.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-ajedrez-jardin-1536.webp&quot;, &quot;alt&quot;: &quot;Mesa con tablero de ajedrez frente al jardín del centro.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-domino.webp&quot;, &quot;alt&quot;: &quot;Mesa de dominó de madera en un patio con helechos.&quot;}]" data-title="Áreas recreativas" data-event="gallery_open" data-loc="Áreas recreativas" aria-label="Ampliar Áreas recreativas (8 fotos)"><span class="g-count">8 fotos</span></button></figure>
+            <figure><img src="assets/img/consultorio-sala-640.webp" srcset="assets/img/consultorio-sala-640.webp 640w, assets/img/consultorio-sala.webp 1536w" sizes="(min-width: 960px) 25vw, 85vw" width="1536" height="864" alt="Consultorio con escritorio, sofás y ventanas con cortinas." loading="lazy" decoding="async"><figcaption>Espacios de atención y soporte</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/consultorio-sala.webp&quot;, &quot;alt&quot;: &quot;Consultorio con escritorio, sofás y ventanas con cortinas.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-sala-proyeccion.webp&quot;, &quot;alt&quot;: &quot;Sala con sillas en filas frente a una pantalla de proyección.&quot;}, {&quot;src&quot;: &quot;assets/img/consultorio-escritorio.webp&quot;, &quot;alt&quot;: &quot;Consultorio con escritorio, sillas, sofá y cuadros abstractos.&quot;}, {&quot;src&quot;: &quot;assets/img/consultorio-pantalla.webp&quot;, &quot;alt&quot;: &quot;Consultorio con sofá, escritorio y pantalla en la pared.&quot;}, {&quot;src&quot;: &quot;assets/img/consultorio-ventana.webp&quot;, &quot;alt&quot;: &quot;Consultorio con escritorio y sofá junto a una ventana con luz natural.&quot;}, {&quot;src&quot;: &quot;assets/img/sp-recepcion-2.webp&quot;, &quot;alt&quot;: &quot;Recepción con sillones, orquídea y trofeos sobre una mesa.&quot;}, {&quot;src&quot;: &quot;assets/img/equipo-entrada.webp&quot;, &quot;alt&quot;: &quot;Equipo de VOLVER reunido frente a la entrada del centro.&quot;}]" data-title="Espacios de atención y soporte" data-event="gallery_open" data-loc="Espacios de atención y soporte" aria-label="Ampliar Espacios de atención y soporte (7 fotos)"><span class="g-count">7 fotos</span></button></figure>
           </div>
         </div>
 
         <div class="gallery-block">
           <h3 class="gallery-title"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg> Bella Vista, Santo Domingo <span>Emergencias y desintoxicación</span></h3>
           <div class="gallery gallery-sd" tabindex="0" aria-label="Galería de Bella Vista, Santo Domingo (deslizable)">
-            <figure><img src="assets/img/sd-sala-espera-640.webp" srcset="assets/img/sd-sala-espera-640.webp 640w, assets/img/sd-sala-espera-1200.webp 1200w" sizes="(min-width: 960px) 33vw, 85vw" width="1200" height="861" alt="Sala de espera con butaca, sillas y cortinas claras." loading="lazy" decoding="async"><figcaption>Sala de espera</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sd-sala-espera-1200.webp&quot;, &quot;alt&quot;: &quot;Sala de espera con butaca, sillas y cortinas claras.&quot;}]" data-title="Sala de espera" data-event="gallery_open" data-loc="Sala de espera" aria-label="Ampliar Sala de espera"></button></figure>
-            <figure><img src="assets/img/sd-consultorio-640.webp" srcset="assets/img/sd-consultorio-640.webp 640w, assets/img/sd-consultorio-1200.webp 1200w" sizes="(min-width: 960px) 33vw, 85vw" width="1200" height="813" alt="Espacio de consulta con butaca y mobiliario." loading="lazy" decoding="async"><figcaption>Espacios de consulta</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sd-consultorio-1200.webp&quot;, &quot;alt&quot;: &quot;Espacio de consulta con butaca y mobiliario.&quot;}]" data-title="Espacios de consulta" data-event="gallery_open" data-loc="Espacios de consulta" aria-label="Ampliar Espacios de consulta"></button></figure>
-            <figure><img src="assets/img/sd-recepcion-512.webp" width="512" height="341" alt="Recepción del centro de Bella Vista con el logotipo de VOLVER." loading="lazy" decoding="async"><figcaption>Recepción</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/sd-recepcion-512.webp&quot;, &quot;alt&quot;: &quot;Recepción del centro de Bella Vista con el logotipo de VOLVER.&quot;}]" data-title="Recepción" data-event="gallery_open" data-loc="Recepción" aria-label="Ampliar Recepción"></button></figure>
+            <figure class="g-a"><img src="assets/img/bv-recepcion-flores-640.webp" srcset="assets/img/bv-recepcion-flores-640.webp 640w, assets/img/bv-recepcion-flores.webp 1536w" sizes="(min-width: 960px) 50vw, 85vw" width="1536" height="1024" alt="Recepción de Bella Vista con mesa de madera, flores amarillas y cuadro." loading="lazy" decoding="async"><figcaption>Instalaciones generales</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/bv-recepcion-flores.webp&quot;, &quot;alt&quot;: &quot;Recepción de Bella Vista con mesa de madera, flores amarillas y cuadro.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-recepcion-ventanilla.webp&quot;, &quot;alt&quot;: &quot;Ventanilla de recepción de Bella Vista con una colaboradora sonriendo.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-paneles.webp&quot;, &quot;alt&quot;: &quot;Área de espera de Bella Vista con el logotipo de VOLVER y paneles informativos.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-sala-flores.webp&quot;, &quot;alt&quot;: &quot;Sala de espera de Bella Vista con sofás grises, mesa de café y papel tapiz floral.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-sala-marron.webp&quot;, &quot;alt&quot;: &quot;Sala de espera de Bella Vista con sofás marrones y ventanales.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-bano.webp&quot;, &quot;alt&quot;: &quot;Baño accesible de Bella Vista con barra de apoyo.&quot;}]" data-title="Instalaciones generales" data-event="gallery_open" data-loc="Instalaciones generales (Bella Vista)" aria-label="Ampliar Instalaciones generales de Bella Vista (6 fotos)"><span class="g-count">6 fotos</span></button></figure>
+            <figure><img src="assets/img/bv-salon-sofas-640.webp" srcset="assets/img/bv-salon-sofas-640.webp 640w, assets/img/bv-salon-sofas.webp 1536w" sizes="(min-width: 960px) 25vw, 85vw" width="1536" height="1024" alt="Salón de Bella Vista con sofás de cuero, mesa con sillas rojas y televisor." loading="lazy" decoding="async"><figcaption>Espacios de convivencia</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/bv-salon-sofas.webp&quot;, &quot;alt&quot;: &quot;Salón de Bella Vista con sofás de cuero, mesa con sillas rojas y televisor.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-salon-mesa.webp&quot;, &quot;alt&quot;: &quot;Salón de Bella Vista con mesa de madera, sillas rojas y sofás.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-salon-cuadro.webp&quot;, &quot;alt&quot;: &quot;Área de estar de Bella Vista con sofás de cuero y cuadro circular.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-dormitorio-1.webp&quot;, &quot;alt&quot;: &quot;Dormitorio de Bella Vista con cama, armario y aire acondicionado.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-dormitorio-2.webp&quot;, &quot;alt&quot;: &quot;Dormitorio de Bella Vista con cama, mesa de noche y cuadro.&quot;}]" data-title="Espacios de convivencia" data-event="gallery_open" data-loc="Espacios de convivencia (Bella Vista)" aria-label="Ampliar Espacios de convivencia de Bella Vista (5 fotos)"><span class="g-count">5 fotos</span></button></figure>
+            <figure><img src="assets/img/bv-habitacion-clinica-640.webp" srcset="assets/img/bv-habitacion-clinica-640.webp 640w, assets/img/bv-habitacion-clinica.webp 1024w" sizes="(min-width: 960px) 25vw, 85vw" width="1024" height="1536" alt="Habitación clínica de Bella Vista con cama, soporte para suero y aire acondicionado." loading="lazy" decoding="async"><figcaption>Espacios de atención y soporte</figcaption><button type="button" class="g-open" data-photos="[{&quot;src&quot;: &quot;assets/img/bv-habitacion-clinica.webp&quot;, &quot;alt&quot;: &quot;Habitación clínica de Bella Vista con cama, soporte para suero y aire acondicionado.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-estacion-clinica.webp&quot;, &quot;alt&quot;: &quot;Área clínica de Bella Vista con estación de atención, camilla y consultorio.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-consultorio-medico.webp&quot;, &quot;alt&quot;: &quot;Consultorio médico de Bella Vista con escritorio y modelos del cerebro.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-rincon-espera.webp&quot;, &quot;alt&quot;: &quot;Rincón de espera de Bella Vista con butaca y plantas.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-salon-espera.webp&quot;, &quot;alt&quot;: &quot;Salón de espera de Bella Vista con butacas y luz cálida.&quot;}, {&quot;src&quot;: &quot;assets/img/bv-sala-juntas.webp&quot;, &quot;alt&quot;: &quot;Sala de reuniones de Bella Vista con mesa, sillones y pantalla.&quot;}]" data-title="Espacios de atención y soporte" data-event="gallery_open" data-loc="Espacios de atención y soporte (Bella Vista)" aria-label="Ampliar Espacios de atención y soporte de Bella Vista (6 fotos)"><span class="g-count">6 fotos</span></button></figure>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ RESEÑAS DE GOOGLE ============
-         Sin calificación, totales, estrellas ni fechas: son datos que cambian en Google y quedarían
-         desactualizados. Los textos son reseñas públicas (con omisiones marcadas con (…)). -->
+    <!-- ============ RESEÑAS DE GOOGLE ============ -->
     <section class="section voices" id="familias" aria-labelledby="familias-title">
       <div class="wrap">
         <header class="section-head section-head-split">
@@ -635,7 +625,7 @@
           <p>Una conversación confidencial con admisiones es el primer paso. Le ayudamos a entender qué nivel de atención podría necesitar su familiar.</p>
         </div>
         <div class="cta-band-actions">
-          <a class="btn btn-red btn-lg" href="tel:+18095346002" data-event="click_call_hero" data-loc="mid-band"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Llamar a admisiones</a>
+          <a class="btn btn-red btn-lg" href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="mid-band"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Consultar por WhatsApp</a>
           <a class="btn btn-ghost btn-lg" href="#formulario">Prefiero que me llamen</a>
         </div>
       </div>
@@ -645,10 +635,8 @@
     <section class="section first-step" id="primer-paso" aria-labelledby="paso-title">
       <div class="wrap first-grid">
         <div class="first-media">
-          <!-- IMAGEN PROVISIONAL (stock Unsplash). Reemplazar por fotografía real de admisiones / consultorio de VOLVER. -->
           <picture>
-            <source media="(min-width: 960px)" srcset="assets/img/stock-orientacion-vertical-600.webp 600w, assets/img/stock-orientacion-vertical-900.webp 900w" sizes="45vw">
-            <img src="assets/img/stock-orientacion-1200.webp" srcset="assets/img/stock-orientacion-700.webp 700w, assets/img/stock-orientacion-1200.webp 1200w" sizes="100vw" width="1200" height="675" loading="lazy" decoding="async" alt="Una profesional conversa con un familiar en un consultorio tranquilo.">
+            <img src="assets/img/primer-paso-sesion-1024.webp" srcset="assets/img/primer-paso-sesion-640.webp 640w, assets/img/primer-paso-sesion-1024.webp 1024w" sizes="(min-width: 960px) 45vw, 100vw" width="1024" height="1536" loading="lazy" decoding="async" alt="Una profesional escucha y toma notas durante una conversación en un consultorio.">
           </picture>
           <ul class="reassure">
             <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg> La conversación es confidencial</li>
@@ -682,7 +670,7 @@
       </div>
     </section>
 
-    <!-- ============ 10 · ADMISIÓN Y RESISTENCIA (adelantada: duda nº 1 de las familias) ============ -->
+    <!-- ============ 10 · ADMISIÓN Y RESISTENCIA ============ -->
     <section class="section admission" id="admision" aria-labelledby="admision-title">
       <div class="wrap">
         <header class="section-head">
@@ -712,7 +700,7 @@
             <h3>Traslado asistido</h3>
           </div>
           <p>Cuando corresponde, VOLVER puede coordinar un traslado asistido para facilitar el acceso seguro y digno a la atención. La solicitud de un familiar, por sí sola, no determina un ingreso involuntario; este requiere valoración profesional y el cumplimiento de los requisitos legales aplicables.</p>
-          <a class="btn" href="tel:+18095346002" data-event="click_call_hero" data-loc="admission"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Consultar mi caso con admisiones</a>
+          <a class="btn" href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="admission"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Consultar mi caso por WhatsApp</a>
         </aside>
       </div>
     </section>
@@ -725,7 +713,7 @@
           <h2 id="costos-title">Claridad desde el inicio: VOLVER es una clínica privada</h2>
           <p class="pricing-lead">El tratamiento en VOLVER implica un costo. No existe un presupuesto único aplicable a todos los pacientes, porque cada persona llega con condiciones y necesidades clínicas particulares.</p>
           <p class="key-msg"><span>Clínica privada</span><span>Evaluación individual</span><span>Presupuesto detallado después de la evaluación</span></p>
-          <a class="btn btn-red btn-lg pricing-cta" href="tel:+18095346002" data-event="click_call_hero" data-loc="pricing"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Consultar costos con admisiones</a>
+          <a class="btn btn-red btn-lg pricing-cta" href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="pricing"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Consultar costos por WhatsApp</a>
         </div>
         <ol class="steps">
           <li>
@@ -740,17 +728,15 @@
       </div>
     </section>
 
-    <!-- Respuestas sobre duración, seguro y visitas: texto genérico provisional, pendiente de confirmar con VOLVER. -->
     <!-- ============ 13 · FAQ ============ -->
     <section class="section faq" id="preguntas" aria-labelledby="faq-title">
       <div class="wrap faq-grid">
         <header>
           <p class="eyebrow">Preguntas frecuentes</p>
           <h2 id="faq-title">Lo que las familias suelen preguntar antes de llamar</h2>
-          <p class="faq-aside">¿Su pregunta no está aquí? <a href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_footer" data-loc="faq">Escríbanos por WhatsApp</a>.</p>
           <div class="faq-card">
             <p>Cada caso es distinto. Una conversación resuelve más dudas que cualquier lectura.<span>Confidencial y sin compromiso.</span></p>
-            <a class="btn btn-red" href="tel:+18095346002" data-event="click_call_hero" data-loc="faq"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Llamar a admisiones</a>
+            <a class="btn btn-red" href="https://wa.me/18497853789?text=Hola,%20necesito%20orientaci%C3%B3n%20sobre%20el%20proceso%20de%20admisi%C3%B3n%20en%20VOLVER." target="_blank" rel="noopener" data-event="click_wa_hero" data-loc="faq"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Consultar por WhatsApp</a>
           </div>
         </header>
         <div class="accordion">
@@ -774,26 +760,6 @@
             <h3><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">¿Se puede visitar o hablar con el paciente durante el internamiento?<svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></button></h3>
             <div class="acc-panel" id="faq-5" role="region" aria-labelledby="faq-5-btn"><p>La comunicación con la familia y las visitas se organizan dentro del plan de tratamiento, de acuerdo con la etapa del proceso y las indicaciones del equipo clínico. El equipo de admisiones le explicará cómo funciona en su caso.</p></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 4 · IDENTIDAD ============ -->
-    <section class="section identity" id="volver" aria-labelledby="volver-title">
-      <div class="wrap identity-grid">
-        <!-- IMAGEN ALEGÓRICA PROVISIONAL (stock Unsplash): el camino de regreso. Reemplazable por fotografía propia. -->
-        <figure class="identity-mark">
-          <img class="identity-photo" src="assets/img/stock-volver-camino-1100.webp" srcset="assets/img/stock-volver-camino-700.webp 700w, assets/img/stock-volver-camino-1100.webp 1100w" sizes="(min-width: 960px) 42vw, 100vw" width="1100" height="1734" loading="lazy" decoding="async" alt="Una persona avanza por un sendero hacia la luz del amanecer.">
-          <img class="identity-emblem" src="assets/img/emblema-r.png" alt="" width="500" height="419" loading="lazy" aria-hidden="true">
-          <blockquote class="verse">
-            <p>«Y volviendo en sí, dijo: (…) me levantaré e iré a mi padre.»</p>
-            <cite>Lucas 15:17–18</cite>
-          </blockquote>
-        </figure>
-        <div class="identity-copy">
-          <p class="eyebrow">El significado de VOLVER</p>
-          <h2 id="volver-title">Volver en sí. Volver a tomar dirección. Volver a los vínculos. <em>Volver a la familia.</em></h2>
-          <p>El concepto de Clínica Conductual VOLVER nace de una imagen profundamente humana: una persona puede atravesar decisiones equivocadas, pérdidas, crisis y procesos difíciles sin que esas experiencias tengan que definir para siempre su historia. La “R” invertida y marcada del emblema representa esas huellas.</p>
         </div>
       </div>
     </section>
@@ -866,7 +832,6 @@
             </fieldset>
             <button class="btn btn-red btn-block btn-lg" type="submit">Solicitar orientación confidencial</button>
             <p class="form-micro form-confid"><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg> <span><strong>La confidencialidad es un eje fundamental y un valor institucional de VOLVER.</strong> La información compartida para fines de orientación y admisión se maneja conforme a la normativa aplicable.</span></p>
-            <!-- Agregar aquí el enlace a la política de privacidad cuando exista: volver.com.do/politica-de-privacidad/ da 404. -->
           </form>
           <div class="form-success" id="form-success" hidden tabindex="-1">
             <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
@@ -895,7 +860,7 @@
   </footer>
 
 
-  <!-- ============ SEMBLANZA · HANOI VARGAS (fuente: CV entregado por VOLVER) ============ -->
+  <!-- ============ SEMBLANZA · HANOI VARGAS ============ -->
   <dialog class="bio-modal" id="bio-hanoi" aria-labelledby="bio-hanoi-title">
     <div class="bio-inner">
       <button class="bio-close" type="button" data-close aria-label="Cerrar semblanza"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
@@ -938,7 +903,7 @@
           <li>Salud mental</li><li>Psicología clínica</li><li>Crisis conductuales</li><li>Crisis familiares</li><li>Dependencias a sustancias</li><li>Diseño de programas de salud</li><li>Monitoreo y evaluación</li><li>Formación de profesionales</li><li>Intervención comunitaria</li>
         </ul>
 
-        <a class="btn btn-red btn-lg bio-cta" href="tel:+18095346002" data-event="click_call_bio" data-loc="bio-hanoi-cta"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Solicitar orientación</a>
+        <a class="btn btn-red btn-lg bio-cta" href="https://tidycal.com/clinicavolveroficial/orientacion-confidencial" target="_blank" rel="noopener" data-event="click_schedule" data-loc="bio-hanoi-cta"><svg class="ico" aria-hidden="true"><use href="#i-calendar"/></svg> Agendar orientación</a>
       </div>
     </div>
   </dialog>
