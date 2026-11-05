@@ -342,7 +342,7 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
 (function () {
   var v = document.getElementById('hero-video');
   if (!v) return;
-  if (window.matchMedia('(max-width: 899px)').matches) v.setAttribute('poster', 'assets/img/hero-abrazo-poster-1280.webp');
+  if (window.matchMedia('(max-width: 899px)').matches) v.setAttribute('poster', 'assets/img/hero-abrazo-v2-poster-1280.webp');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     v.removeAttribute('autoplay');
     v.pause();
