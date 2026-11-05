@@ -350,57 +350,65 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
   }
 })();
 
-/* ---------- Pasarelas en móvil: flechas, contador y aviso de deslizar ---------- */
+/* ---------- Pasarelas en móvil: flechas superpuestas y aviso de deslizar ---------- */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var arrow = '<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>';
 
-  document.querySelectorAll('.trust-list, .team-grid, .gallery, .g-grid').forEach(function (track) {
-    var nav = document.createElement('div');
-    nav.className = 'car-nav';
-    nav.hidden = true;
-    nav.innerHTML =
-      '<button type="button" class="car-btn car-prev" aria-label="Ver anterior">' + arrow + '</button>' +
-      '<p class="car-info"><span class="car-count"></span><span class="car-hint">Deslice para ver más</span></p>' +
-      '<button type="button" class="car-btn car-next" aria-label="Ver siguiente">' + arrow + '</button>';
-    track.parentNode.insertBefore(nav, track.nextSibling);
+  document.querySelectorAll('.team-grid, .gallery, .g-grid').forEach(function (track) {
+    var wrap = document.createElement('div');
+    wrap.className = 'car-wrap' + (track.classList.contains('g-grid') ? ' car-bottom' : '');
+    track.parentNode.insertBefore(wrap, track);
+    wrap.appendChild(track);
 
-    var prev = nav.querySelector('.car-prev');
-    var next = nav.querySelector('.car-next');
-    var count = nav.querySelector('.car-count');
+    var prev = document.createElement('button');
+    prev.type = 'button';
+    prev.className = 'car-btn car-prev';
+    prev.setAttribute('aria-label', 'Ver anterior');
+    prev.innerHTML = arrow;
+    var next = document.createElement('button');
+    next.type = 'button';
+    next.className = 'car-btn car-next';
+    next.setAttribute('aria-label', 'Ver siguiente');
+    next.innerHTML = '<span class="car-label">Deslice</span>' + arrow;
+    wrap.appendChild(prev);
+    wrap.appendChild(next);
+
     var items = Array.prototype.slice.call(track.children);
-    var pad = function () { return parseFloat(getComputedStyle(track).paddingLeft) || 0; };
     var maxScroll = function () { return track.scrollWidth - track.clientWidth; };
+    var center = function (el) { var r = el.getBoundingClientRect(); return r.left + r.width / 2; };
 
     function current() {
+      if (track.scrollLeft <= 2) return 0;
       if (track.scrollLeft >= maxScroll() - 2) return items.length - 1;
-      var base = track.getBoundingClientRect().left + pad();
-      var best = 0, min = Infinity;
+      var mid = center(track), best = 0, min = Infinity;
       items.forEach(function (el, i) {
-        var d = Math.abs(el.getBoundingClientRect().left - base);
+        var d = Math.abs(center(el) - mid);
         if (d < min) { min = d; best = i; }
       });
       return best;
     }
     function update() {
-      nav.hidden = maxScroll() <= 4;
-      if (nav.hidden) return;
-      count.textContent = (current() + 1) + ' de ' + items.length;
-      prev.disabled = track.scrollLeft <= 2;
-      next.disabled = track.scrollLeft >= maxScroll() - 2;
+      var on = maxScroll() > 4;
+      prev.hidden = next.hidden = !on;
+      if (!on) return;
+      var atStart = track.scrollLeft <= 2, atEnd = track.scrollLeft >= maxScroll() - 2;
+      prev.classList.toggle('is-off', atStart);
+      next.classList.toggle('is-off', atEnd);
+      prev.disabled = atStart;
+      next.disabled = atEnd;
     }
     function go(i) {
       var el = items[Math.max(0, Math.min(items.length - 1, i))];
-      var left = track.scrollLeft + el.getBoundingClientRect().left - track.getBoundingClientRect().left - pad();
-      track.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
-      nav.classList.add('is-used');
+      track.scrollTo({ left: track.scrollLeft + center(el) - center(track), behavior: reduce ? 'auto' : 'smooth' });
+      wrap.classList.add('is-used');
     }
     prev.addEventListener('click', function () { go(current() - 1); });
     next.addEventListener('click', function () { go(current() + 1); });
 
     var ticking = false;
     track.addEventListener('scroll', function () {
-      nav.classList.add('is-used');
+      wrap.classList.add('is-used');
       if (ticking) return;
       ticking = true;
       window.requestAnimationFrame(function () { ticking = false; update(); });
@@ -408,6 +416,16 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     window.addEventListener('resize', update);
     window.addEventListener('load', update);
     update();
+
+    // El aviso "Deslice" se recoge solo para no tapar el contenido.
+    if ('IntersectionObserver' in window) {
+      var seen = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        seen.disconnect();
+        window.setTimeout(function () { wrap.classList.add('is-used'); }, 6000);
+      }, { threshold: 0.4 });
+      seen.observe(wrap);
+    }
   });
 })();
 
