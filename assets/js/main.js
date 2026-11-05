@@ -349,3 +349,65 @@ document.querySelectorAll('a[href="#top"]').forEach(function (a) {
     v.currentTime = 0;
   }
 })();
+
+/* ---------- Pasarelas en móvil: flechas, contador y aviso de deslizar ---------- */
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var arrow = '<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>';
+
+  document.querySelectorAll('.trust-list, .team-grid, .gallery, .g-grid').forEach(function (track) {
+    var nav = document.createElement('div');
+    nav.className = 'car-nav';
+    nav.hidden = true;
+    nav.innerHTML =
+      '<button type="button" class="car-btn car-prev" aria-label="Ver anterior">' + arrow + '</button>' +
+      '<p class="car-info"><span class="car-count"></span><span class="car-hint">Deslice para ver más</span></p>' +
+      '<button type="button" class="car-btn car-next" aria-label="Ver siguiente">' + arrow + '</button>';
+    track.parentNode.insertBefore(nav, track.nextSibling);
+
+    var prev = nav.querySelector('.car-prev');
+    var next = nav.querySelector('.car-next');
+    var count = nav.querySelector('.car-count');
+    var items = Array.prototype.slice.call(track.children);
+    var pad = function () { return parseFloat(getComputedStyle(track).paddingLeft) || 0; };
+    var maxScroll = function () { return track.scrollWidth - track.clientWidth; };
+
+    function current() {
+      if (track.scrollLeft >= maxScroll() - 2) return items.length - 1;
+      var base = track.getBoundingClientRect().left + pad();
+      var best = 0, min = Infinity;
+      items.forEach(function (el, i) {
+        var d = Math.abs(el.getBoundingClientRect().left - base);
+        if (d < min) { min = d; best = i; }
+      });
+      return best;
+    }
+    function update() {
+      nav.hidden = maxScroll() <= 4;
+      if (nav.hidden) return;
+      count.textContent = (current() + 1) + ' de ' + items.length;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= maxScroll() - 2;
+    }
+    function go(i) {
+      var el = items[Math.max(0, Math.min(items.length - 1, i))];
+      var left = track.scrollLeft + el.getBoundingClientRect().left - track.getBoundingClientRect().left - pad();
+      track.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
+      nav.classList.add('is-used');
+    }
+    prev.addEventListener('click', function () { go(current() - 1); });
+    next.addEventListener('click', function () { go(current() + 1); });
+
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      nav.classList.add('is-used');
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () { ticking = false; update(); });
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    window.addEventListener('load', update);
+    update();
+  });
+})();
+

@@ -970,3 +970,23 @@ html.bio-lock { overflow: hidden; }
   .lb-next { right: 12px; }
   .lb-bar { padding: 14px 70px 18px; min-height: 64px; align-content: center; }
 }
+
+/* ---------- Pasarelas en móvil: controles ---------- */
+.car-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.car-nav[hidden] { display: none; }
+.car-info { display: grid; justify-items: center; gap: 1px; margin: 0; min-width: 0; line-height: 1.25; text-align: center; }
+.car-count { font-size: .9rem; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.car-hint { font-size: .8rem; font-weight: 600; color: var(--muted); }
+.car-btn { flex: none; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line-2); border-radius: 50%; background: #fff; color: var(--red); cursor: pointer; transition: opacity .2s, background .2s; }
+.car-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.car-btn:disabled { opacity: .35; cursor: default; }
+.car-btn .ico { width: 20px; height: 20px; }
+.car-prev .ico { transform: scaleX(-1); }
+.car-nav:not(.is-used) .car-next:not(:disabled) { animation: car-nudge 1.5s ease-in-out 4; }
+@keyframes car-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+.team .car-count { color: #fff; }
+.team .car-hint { color: #C9C6C0; }
+.team .car-btn { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.28); color: #fff; }
+.team .car-btn:focus-visible { outline-color: #fff; }
+
+.trust-list + .car-nav { margin-bottom: 12px; }
