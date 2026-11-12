@@ -915,10 +915,6 @@ html.bio-lock { overflow: hidden; }
 @media (min-width: 900px) { .intl-card { grid-template-columns: 1fr auto; } }
 @media (max-width: 559px) { .intl-card .btn { width: 100%; } }
 
-/* ---------- Costos ---------- */
-.pricing-cta { margin-top: 24px; }
-@media (max-width: 559px) { .pricing-cta { width: 100%; } }
-
 /* ---------- Fondos tras el nuevo orden ---------- */
 .faq { background: var(--mist); }
 .faq .acc-btn .ico { background: #fff; }
@@ -1019,3 +1015,35 @@ html.bio-lock { overflow: hidden; }
 .consent:not([hidden]) ~ .to-top { display: none; }
 @media (min-width: 900px) { .to-top { right: 24px; bottom: 24px; } }
 
+/* ---------- Consulta exploratoria (estilo editorial) ---------- */
+.consult-grid { display: grid; gap: 44px; }
+@media (min-width: 1000px) { .consult-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 72px; align-items: start; } }
+.consult-intro h2 { margin-bottom: 20px; font-size: clamp(2.5rem, 1.7rem + 3vw, 4rem); line-height: 1.02; }
+.consult-intro .section-intro { margin: 0; }
+.consult-facts { margin: 36px 0 0; border-top: 1px solid var(--ink); }
+.consult-facts > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 20px; padding: 18px 0; border-bottom: 1px solid var(--line-2); }
+.consult-facts dt { display: flex; align-items: center; gap: 10px; font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+.consult-facts dt .ico { flex: none; width: 18px; height: 18px; color: var(--red); }
+.consult-facts dd { margin: 0; color: var(--ink-2); font-size: .97rem; }
+@media (max-width: 559px) { .consult-facts > div { grid-template-columns: 1fr; } }
+.consult-options { display: grid; gap: 20px; }
+@media (min-width: 640px) { .consult-options { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.consult-card { display: flex; flex-direction: column; padding: 26px 26px 26px; border: 1px solid var(--line-2); border-radius: var(--radius-lg); background: #fff; }
+.consult-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 26px; padding-bottom: 16px; margin-bottom: 22px; border-bottom: 1px solid var(--line); }
+.consult-num { font-family: var(--serif); font-size: 1.15rem; font-style: italic; color: var(--red); }
+.consult-tag { padding: 4px 10px; border-radius: 999px; background: var(--red); color: #fff; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.consult-card h3 { margin: 0; font-size: 1.12rem; }
+@media (min-width: 640px) { .consult-card h3 { min-height: 2.6em; } }
+.consult-price { margin: 18px 0 24px; font-family: var(--serif); font-size: clamp(2.8rem, 2.2rem + 1.6vw, 3.6rem); font-weight: 600; line-height: 1; letter-spacing: -.01em; color: var(--ink); }
+.consult-price span { display: block; margin-bottom: 8px; font-family: var(--sans); font-size: .78rem; font-weight: 700; letter-spacing: .14em; color: var(--muted); }
+.consult-list { flex: 1; display: grid; align-content: start; gap: 10px; margin: 0 0 28px; padding: 0; list-style: none; }
+.consult-list li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-2); font-size: .95rem; }
+.consult-list .ico { flex: none; width: 18px; height: 18px; margin-top: 2px; color: var(--red); }
+.consult-card .btn { width: 100%; justify-content: center; height: auto; min-height: var(--h); padding-block: 10px; white-space: normal; text-align: center; line-height: 1.25; }
+.consult-card-dark { background: var(--night); border-color: var(--night); box-shadow: 0 30px 60px -34px rgba(18,20,24,.75); }
+.consult-card-dark .consult-card-top { border-color: rgba(255,255,255,.14); }
+.consult-card-dark .consult-num, .consult-card-dark .consult-list .ico { color: #E5484D; }
+.consult-card-dark h3, .consult-card-dark .consult-price { color: #fff; }
+.consult-card-dark .consult-price span { color: rgba(255,255,255,.62); }
+.consult-card-dark .consult-list li { color: rgba(255,255,255,.84); }
+.consult-note { margin: 16px 0 0; font-size: .85rem; color: var(--muted); }
